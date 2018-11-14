@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+
+	<title>JQuery Before / After Automatic Animation</title>
+
+	<!-- Mobile Metas -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<div class="page-container blockEvents">
+
+    <!-- Before / After Images -->
+    <div class="js-img-compare">
+        <div style="display: none;" class="clip-image">
+            <img src="img/img_after.jpg" alt="Before">
+        </div>
+        <div>
+            <img src="img/img_before.jpg" alt="After">
+        </div>
+        <div class="separator-line"></div>
+    </div>
+
+    <div class="animated-blurb">
+       <h1 class="bold-weight fade-img-text-1">Some Text Here 1</h1>
+       <h1 class="bold-weight fade-img-text-2">Some Other Text Here 2</h1>
+    </div>
+
+</div>
+
+<!-- Jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<!-- Image Comparison JS -->
+<script src="js/hammer.min.js"></script>
+<script src="js/jquery.images-compare.js"></script>
+<script src="js/animation.js"></script>
+
+<script>
+
+$(function () {
+    var imagesCompareElement = $('.js-img-compare').imagesCompare();
+    var imagesCompare = imagesCompareElement.data('imagesCompare');
+    var events = imagesCompare.events();
+    var dragHandle = $(".images-compare-handle");
+
+    imagesCompare.on(events.changed, function (event) {
+        if (event.ratio < 0.4) {
+            console.log('We see more than half of the back image');
+            $(".images-compare-handle").css('display', 'none');
+        }
+        if (event.ratio > 0.6) {
+            console.log('We see more than half of the front image');
+            $(".images-compare-handle").css('display', 'none');
+        }
+
+        if (event.ratio >= 0.5 && event.ratio <= 0.503) {
+            console.log('We see half of back and half of front image');
+            dragHandle.css("display","block");
+        } else {
+            $(".images-compare-handle").css('display', 'none');
+        }
+
+        if (event.ratio <= 0) {
+            console.log('We see completely back image');
+            $(".images-compare-handle").css('display', 'none');
+        }
+
+        if (event.ratio >= 1) {
+            console.log('We see completely front image');
+            $(".images-compare-handle").css('display', 'none');
+        }
+    });
+});
+
+</script>
+
+</body>

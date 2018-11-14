@@ -1,0 +1,131 @@
+.page-container {
+    max-width: 98vh;
+    margin: 0 auto;
+    margin-top: 100px;
+    height: auto;
+    text-align: center;
+    padding: 15px;
+    background: white;
+    opacity: 0;
+}
+
+.blockEvents {
+	pointer-events: none;
+}
+
+/* Image Compare CSS */
+
+/* Images compare main container */
+.images-compare-container {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Images compare front element */
+.images-compare-before {
+    will-change: clip;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Images compare back element */
+.images-compare-after {
+    pointer-events: none;
+}
+
+/* Responsive image settings */
+.images-compare-before img, .images-compare-after img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Separator (thin vertical blank line) */
+.images-compare-separator {
+    position: absolute;
+    background: #000;
+    height: 100%;
+    width: 4px;
+    z-index: 4;
+    left: 0;
+    top: 0;
+}
+
+/* Hypothetical Separator Line */
+.separator-line {
+    position: absolute;
+    background: #000;
+    height: 100%;
+    width: 4px;
+    z-index: 4;
+    left: 5px;
+    top: 0;
+}
+
+/* Drag handle (circle) */
+.images-compare-handle {
+    height: 30px;
+    width: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -38px;
+    margin-top: -22px;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    z-index: 10;
+    background: rgb(0, 0, 0, 0.7);
+    cursor: pointer;
+
+    /* Customized CSS */
+    padding: 0px 10px 0px 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    line-height: 28px;
+
+    -webkit-animation-name: slideme;
+    -webkit-animation-duration: 1.5s;
+    animation-name: slideme;
+    animation-duration: 1.5s;
+
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes slideme {
+
+    from {
+        border-radius: 40px;
+        opacity: 0;
+        transform: scale3d(0.5, 0.5, 0.5);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+/* Standard syntax */
+@keyframes slideme {
+
+     from {
+        border-radius: 40px;
+        opacity: 0;
+        transform: scale3d(0.5, 0.5, 0.5);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+}
